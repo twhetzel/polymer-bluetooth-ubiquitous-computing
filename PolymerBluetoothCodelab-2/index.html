@@ -9,9 +9,10 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  
   <!-- Polymer Elements for Bluetooth -->
-  <link rel="import" href="bower_components/paper-button/paper-button.html">
   <link rel="import" href="bower_components/platinum-bluetooth/platinum-bluetooth-device.html">
+  <link rel="import" href="bower_components/platinum-bluetooth/platinum-bluetooth-characteristic.html">
 
   <link rel="import" href="bower_components/iron-icons/iron-icons.html">
   <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
@@ -27,27 +28,21 @@
 </head>
 
 <body unresolved>
-  <platinum-bluetooth-device services-filter='["battery_service"]'>
-  </platinum-bluetooth-device>
-  
   <paper-toolbar>
     <paper-icon-button icon="menu"></paper-icon-button>
     <span class="flex">PolymerBluetoothCodelab toolbar</span>
     <paper-fab icon="add"></paper-fab>
   </paper-toolbar>
-
+  
+  <platinum-bluetooth-device services-filter='["battery_service"]'>
+    <platinum-bluetooth-characteristic
+        service="battery_service"
+        characteristic="battery_level">
+    </platinum-bluetooth-characteristic>
+  </platinum-bluetooth-device>
+  
   <section>
-    <p>A simple Polymer
-      <a href="https://elements.polymer-project.org/browse?package=paper-elements">
-      paper elements</a> example that demonstrates using <code>&lt;paper-toolbar&gt;,
-      &lt;paper-button&gt;, &lt;paper-checkbox&gt;, &lt;paper-icon-button&gt;,
-      &lt;paper-fab&gt;, &lt;paper-tabs&gt;</code>, and <code>&lt;paper-toast&gt;</code>.
-    </p>
-    <paper-checkbox label="Got it!"></paper-checkbox>
-  </section>
-
-  <section>
-    <paper-button raised>Get Device</paper-button>
+    <paper-button raised>Get Battery</paper-button>
   </section>
 
   <script src="main.js"></script>
