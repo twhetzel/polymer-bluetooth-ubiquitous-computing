@@ -9,9 +9,19 @@ document.addEventListener('WebComponentsReady', function() {
     batteryDevice.request().then(function(device) {
       console.log('A bluetooth device has been found!');
       console.log('Device Name: ' + device.name);
+      
+      // Connect to the device and read battery level.
+      var batteryLevel = batteryDevice.querySelector('platinum-bluetooth-characteristic');
+      console.log("Request battery level");
+      return batteryLevel.read().then(function(value) {
+        var data = new DataView(value);
+        console.log('Battery Level is ' + data.getUint8(0) + '%');
+      });
+      
     })
     .catch(function(error) {
       console.error('Argh! ', error);
     });
   });
+  
 });
