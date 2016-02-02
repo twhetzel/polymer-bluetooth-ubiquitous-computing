@@ -12,6 +12,7 @@
   
   <!-- Polymer Elements for Bluetooth -->
   <link rel="import" href="bower_components/platinum-bluetooth/platinum-bluetooth-device.html">
+  <link rel="import" href="bower_components/platinum-bluetooth/platinum-bluetooth-service.html">
   <link rel="import" href="bower_components/platinum-bluetooth/platinum-bluetooth-characteristic.html">
 
   <link rel="import" href="bower_components/iron-icons/iron-icons.html">
@@ -35,11 +36,12 @@
   </paper-toolbar>
   
   <platinum-bluetooth-device services-filter='["battery_service"]'>
-    <platinum-bluetooth-characteristic
-        service="battery_service"
-        characteristic="battery_level">
-    </platinum-bluetooth-characteristic>
+    <platinum-bluetooth-service service="battery_service">
+      <platinum-bluetooth-characteristic characteristic="battery_level">
+      </platinum-bluetooth-characteristic>
+    </platinum-bluetooth-service>
   </platinum-bluetooth-device>
+
   
   <section>
     <paper-button raised>Get Battery</paper-button>

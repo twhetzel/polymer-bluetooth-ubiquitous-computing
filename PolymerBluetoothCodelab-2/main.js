@@ -12,10 +12,9 @@ document.addEventListener('WebComponentsReady', function() {
       
       // Connect to the device and read battery level.
       var batteryLevel = batteryDevice.querySelector('platinum-bluetooth-characteristic');
-      console.log("Request battery level");
+      console.log("Requesting battery level");
       return batteryLevel.read().then(function(value) {
-        var data = new DataView(value);
-        console.log('Battery Level is ' + data.getUint8(0) + '%');
+        console.log('Battery Level is ' + value.getUint8(0) + '%');
       });
       
     })
@@ -23,5 +22,5 @@ document.addEventListener('WebComponentsReady', function() {
       console.error('Argh! ', error);
     });
   });
-  
+
 });
